@@ -11,9 +11,7 @@
 
 from __future__ import division
 from math import *
-
-ps = [15,12,8,8,7,7,7,6,5,3]
-hs = [10,25,17,11,13,17,20,13,9,15]
+import sys
 
 def COC(x,y): #Karl Pearson’s coefficient of correlation
 	n = len(x)
@@ -30,4 +28,18 @@ def RP(x,y,x0): #regression prediction
 	y0 = a + b*x0
 	return y0
 
-print '%.1f' % RP(ps,hs,10)
+N = int(raw_input())
+
+X = []
+Y = []
+Z = []
+
+for row in xrange(0,N):
+	values = map(int,sys.stdin.readline().split())
+	X += values[0:1]
+	Y += values[1:2]
+	Z += values[2:3]
+
+print '%.2f' %COC(X,Y)
+print '%.2f' %COC(Y,Z)
+print '%.2f' %COC(X,Z)
